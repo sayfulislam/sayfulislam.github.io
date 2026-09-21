@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Sayful Md Islam">
+  <meta name="description" content="Portfolio of Sayful Md Islam — Senior Software Engineer and DevOps Engineer (Azure) in Tokyo, Japan">
+  <meta name="keywords" content="Sayful Islam, Senior Software Engineer, DevOps Engineer, Azure, .NET Core, Angular, Cosmos validator, Tokyo">
+  <title>Sayful Md Islam — Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --side: #1c2b3a;
+      --side-text: #d6dee6;
+      --accent: #2a8a94;
+      --accent-dark: #1e6b73;
+      --ink: #1f2933;
+      --ink-soft: #52606d;
+      --line: #e3e8ec;
+      --bg: #ffffff;
+      --sidebar-w: 17rem;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", "Segoe UI", sans-serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: var(--accent-dark); text-decoration: none; }
+    a:hover, a:focus-visible { text-decoration: underline; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+    /* ---------- Sidebar ---------- */
+    .side {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--side);
+      color: var(--side-text);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 3rem 1.5rem;
+      z-index: 10;
+    }
+    .side img {
+      width: 10rem; height: 10rem; border-radius: 50%; object-fit: cover;
+      border: 0.4rem solid rgba(255,255,255,.18);
+      background: #2c3e50;
+    }
+    .side .name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.6rem; font-weight: 600; letter-spacing: .02em;
+      color: #fff; margin: 1.25rem 0 0; text-align: center;
+    }
+    .side .role { font-size: .95rem; color: var(--side-text); margin: .2rem 0 2rem; text-align: center; }
+    .side nav { width: 100%; }
+    .side nav a {
+      display: block; padding: .55rem .75rem; margin: .1rem 0;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.15rem; font-weight: 500; letter-spacing: .04em;
+      color: var(--side-text); border-left: 3px solid transparent;
+    }
+    .side nav a:hover { color: #fff; text-decoration: none; }
+    .side nav a.active { color: #fff; border-left-color: var(--accent); background: rgba(255,255,255,.05); }
+    .side .updated { margin-top: auto; font-size: .8rem; color: #8a99a8; }
+    .menu-btn { display: none; }
+
+    /* ---------- Content ---------- */
+    main { margin-left: var(--sidebar-w); }
+    section {
+      max-width: 52rem;
+      padding: 4.5rem 3.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 4.2rem; font-weight: 700; line-height: 1; margin: 0;
+      letter-spacing: .01em;
+    }
+    h1 span { color: var(--accent); }
+    h2 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 2.6rem; font-weight: 700; margin: 0 0 1.5rem; line-height: 1.1;
+    }
+    h3 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.6rem; font-weight: 600; margin: 0;
+    }
+    .subtitle { font-size: 1.35rem; color: var(--ink-soft); margin: .75rem 0 0; }
+    .contact { margin: 1rem 0 1.5rem; color: var(--ink-soft); }
+    .contact a { margin-right: 1rem; }
+    .socials { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; gap: .75rem; flex-wrap: wrap; }
+    .socials a {
+      display: inline-block; padding: .35rem .9rem;
+      border: 1px solid var(--line); border-radius: 2rem; color: var(--ink); font-size: .95rem;
+    }
+    .socials a:hover { border-color: var(--accent); color: var(--accent-dark); text-decoration: none; }
+
+    .item { display: grid; grid-template-columns: 1fr auto; gap: .25rem 2rem; margin-bottom: 2.5rem; }
+    .item:last-child { margin-bottom: 0; }
+    .item .when { color: var(--accent-dark); font-weight: 600; white-space: nowrap; padding-top: .35rem; }
+    .item .where { grid-column: 1 / -1; color: var(--ink-soft); }
+    .item ul { grid-column: 1 / -1; margin: .5rem 0 0; padding-left: 1.2rem; }
+    .item li { margin-bottom: .35rem; }
+    .item .tech { grid-column: 1 / -1; font-size: .95rem; color: var(--ink-soft); margin-top: .5rem; }
+    .item .tech strong { color: var(--ink); font-weight: 600; }
+
+    .skills dl { margin: 0; }
+    .skills dt { font-weight: 600; margin-top: 1rem; }
+    .skills dd { margin: .15rem 0 0; color: var(--ink-soft); }
+
+    .edu p, .cert p { margin: 0 0 .25rem; }
+    .cert ul, .lang ul { padding-left: 1.2rem; margin: 0; }
+    .cert li, .lang li { margin-bottom: .35rem; }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 900px) {
+      :root { --sidebar-w: 0px; }
+      .side {
+        position: sticky; top: 0; bottom: auto; width: 100%;
+        flex-direction: row; flex-wrap: wrap; justify-content: space-between;
+        padding: .75rem 1rem;
+      }
+      .side img { width: 2.75rem; height: 2.75rem; border-width: 2px; }
+      .side .name { font-size: 1.2rem; margin: 0 0 0 .75rem; flex: 1; text-align: left; }
+      .side .role, .side .updated { display: none; }
+      .menu-btn {
+        display: inline-block; background: none; border: 1px solid rgba(255,255,255,.3);
+        color: #fff; padding: .35rem .7rem; border-radius: .3rem; font: inherit; cursor: pointer;
+      }
+      .side nav { display: none; width: 100%; margin-top: .75rem; }
+      .side nav.open { display: block; }
+      section { padding: 2.5rem 1.25rem; }
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2.1rem; }
+      .item { grid-template-columns: 1fr; }
+      .item .when { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<aside class="side">
+  <img src="images/profile.jpg" alt="Photo of Sayful Md Islam">
+  <p class="name">Sayful Md Islam</p>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  <p class="role">Senior Software Engineer · Tokyo</p>
+  <nav id="nav" aria-label="Sections">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#languages">Languages</a>
+  </nav>
+  <p class="updated">Last updated: September 2026</p>
+</aside>
+
+<main>
+
+  <section id="about">
+    <h1>Sayful <span>Md Islam</span></h1>
+    <p class="subtitle">Senior Software Engineer | DevOps Engineer (Azure)</p>
+    <p class="contact">
+      <a href="mailto:sayful23@gmail.com">sayful23@gmail.com</a>
+      Tokyo, Japan
+    </p>
+    <p>Software engineer with 10+ years of experience building scalable, full-stack web applications and managing cloud and server infrastructure. My work spans end-to-end API integration, <strong>.NET Core</strong> and <strong>Angular</strong> development, cloud deployment automation (Azure, Docker, CI/CD), and Web3 infrastructure deployment.</p>
+    <p>I have delivered enterprise ERP and financial systems, built Web3 validator infrastructure for <strong>Cosmos Hub</strong> and <strong>Neutron</strong>, integrated 20+ third-party APIs, and improved deployment efficiency and reliability while leading cross-cultural teams. I enjoy contributing to strategic decisions and turning them into working systems.</p>
+    <ul class="socials">
+      <li><a href="https://github.com/sayfulislam">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/tosayful/">LinkedIn</a></li>
+      <li><a href="https://eazeit.jp">EazeIT Validator</a></li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="item">
+      <h3>Software Engineer</h3>
+      <span class="when">2023 – Present</span>
+      <p class="where">PQS Japan Co., Ltd. — Tokyo, Japan</p>
+      <ul>
+        <li>Architected and led a multi-panel e-commerce ERP system using .NET Core and Angular, managing 80,000+ stock items and improving global sales across 30 countries by 30%.</li>
+        <li>Engineered a real-time synchronization engine integrating 20+ auction house APIs, achieving 98% data accuracy and saving 160+ person-hours monthly through automated workflows.</li>
+        <li>Optimized performance and scalability with Redis caching, REST APIs, and GraphQL, reducing database load by 30% and improving deployment efficiency by 40% via CI/CD pipelines.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> C# .NET Core, Angular, Next.js, Dapper, SQL Server, Redis, Docker, Azure, IIS, Nginx, Cloudflare, GraphQL, CI/CD</p>
+    </div>
+
+    <div class="item">
+      <h3>Programmer</h3>
+      <span class="when">2013 – 2023</span>
+      <p class="where">Investment Corporation of Bangladesh (ICB) — Dhaka, Bangladesh</p>
+      <ul>
+        <li>Developed a centralized General Ledger system using .NET Core and AngularJS, unifying accounting for TDR, FDR, and stock portfolios while reducing reconciliation efforts by 90%.</li>
+        <li>Integrated 4+ complex financial APIs (REST/SOAP) from merchant banks and trading platforms, automating 85% of manual accounting entries and cutting monthly close from 5 days to 2.</li>
+        <li>Built a secure RBAC and Maker-Checker workflow ensuring regulatory compliance, reducing audit findings by 70% while supporting 800+ concurrent users and 20M+ BDT in daily transactions.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> C# .NET Core, AngularJS, Oracle, SQL Server, IIS, iTextSharp, Microsoft Agility Pack, REST/SOAP APIs</p>
+    </div>
+
+    <div class="item">
+      <h3>Software Engineer</h3>
+      <span class="when">2011 – 2012</span>
+      <p class="where">E. B. Solutions Ltd. — Dhaka, Bangladesh</p>
+      <ul>
+        <li>Digitized the Dhaka Metropolitan Police traffic prosecution process, reducing case resolution time from 15 days to under 48 hours and increasing fine collection revenue by 40% in year one.</li>
+        <li>Engineered a mobile-to-server synchronization layer using custom SMS/Data protocols and J2ME, enabling real-time field reporting and reducing paperwork processing time by 90%.</li>
+        <li>Architected a unified payment and reporting ecosystem integrating mobile financial services and automated Crystal Reports, handling 5,000+ daily violations with 99.8% uptime.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> C# .NET, SQL Server, ASP.NET, Crystal Reports, REST/SOAP APIs, ROBI VAS Integration, SMS Service</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="item">
+      <h3>Web3 Infrastructure Automation for Cosmos Hub</h3>
+      <span class="when">Feb 2026 – Jul 2026</span>
+      <p class="where">Automated blockchain validator infrastructure with full monitoring, alerting, and centralized log aggregation.</p>
+      <ul>
+        <li>Deployed and automated validator nodes on Ubuntu Linux using Docker and Nginx for high availability and secure operations.</li>
+        <li>Built end-to-end observability with Prometheus, Grafana, and Loki for real-time metrics, dashboards, and centralized logging.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> Linux (Ubuntu), Docker, Nginx, Prometheus, Grafana, Loki</p>
+    </div>
+
+    <div class="item">
+      <h3>Auction House Stock Synchronization Platform</h3>
+      <span class="when">Sep 2024 – Sep 2025</span>
+      <p class="where">Real-time backend integration synchronizing 80,000+ stock items across 20+ auction house APIs into a unified, normalized data hub.</p>
+      <ul>
+        <li>Built a scalable .NET Core service normalizing 20+ APIs with mixed authentication (OAuth2, API keys, JWT) into a consistent internal data model.</li>
+        <li>Implemented Redis caching and background workers achieving 99.8% sync accuracy with sub-5-minute latency, eliminating 160+ manual person-hours monthly.</li>
+        <li>Reduced new-integration onboarding from 3–4 weeks to under 3 days via a unified API interface.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> C# .NET Core, REST API, SQL Server, Entity Framework/Dapper, Redis, Azure, Windows Server IIS</p>
+    </div>
+
+    <div class="item">
+      <h3>Automated Result Processing System for National University</h3>
+      <span class="when">Oct 2013</span>
+      <p class="where">OCR-based system to digitize and automate evaluation of hard-copy examination sheets, with configurable grading rules and official reporting.</p>
+      <ul>
+        <li>Built the C# processing engine with OCR output validation, configurable grade/rank rules, and exception handling for missing or ambiguous data.</li>
+        <li>Designed a normalized SQL Server schema with stored procedures and triggers for aggregation and audit logging; published results via ASP.NET and Crystal Reports.</li>
+      </ul>
+      <p class="tech"><strong>Technologies:</strong> C# .NET, SQL Server, Oracle, ASP.NET, Crystal Reports, SOAP APIs, HTML Reporting</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <dl>
+      <dt>Programming languages</dt>
+      <dd>C#, TypeScript, JavaScript, SQL, Python</dd>
+      <dt>Frameworks</dt>
+      <dd>.NET Core, Angular, AngularJS, Next.js, Entity Framework, Dapper</dd>
+      <dt>Databases and platforms</dt>
+      <dd>SQL Server, Oracle, Redis, Azure, IIS, Linux/Nginx, Docker, Cloudflare, Git/GitLab, CI/CD</dd>
+      <dt>Libraries and tools</dt>
+      <dd>REST/SOAP APIs, GraphQL, iTextSharp, Syncfusion XlsIO, Crystal Reports, Prometheus, Grafana, Loki</dd>
+      <dt>Other</dt>
+      <dd>System and API integration, cloud-native architecture, scalable caching, VAS service design, data processing and analytics, team scaling and people management</dd>
+    </dl>
+  </section>
+
+  <section id="education" class="edu">
+    <h2>Education</h2>
+    <div class="item">
+      <h3>M.Sc. in Computer Science</h3>
+      <span class="when">2018</span>
+      <p class="where">Jahangirnagar University</p>
+    </div>
+    <div class="item">
+      <h3>B.Sc. (Hons.) in Computer Science &amp; Engineering</h3>
+      <span class="when">2010</span>
+      <p class="where">Dhaka University of Engineering &amp; Technology (DUET)</p>
+    </div>
+  </section>
+
+  <section id="certifications" class="cert">
+    <h2>Certifications</h2>
+    <ul>
+      <li>SQL Certificate — HackerRank</li>
+      <li>Python for Everybody — Coursera</li>
+      <li>Command Line Basics (Linux) — Scrimba</li>
+    </ul>
+  </section>
+
+  <section id="languages" class="lang">
+    <h2>Languages</h2>
+    <ul>
+      <li>Bengali — native</li>
+      <li>English — business level</li>
+      <li>Japanese — JLPT N3</li>
+    </ul>
+  </section>
+
+</main>
+
+<script>
+  // Mobile menu
+  const btn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('nav');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.addEventListener('click', e => { if (e.target.tagName === 'A') nav.classList.remove('open'); });
+
+  // Highlight the section in view
+  const links = [...nav.querySelectorAll('a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
